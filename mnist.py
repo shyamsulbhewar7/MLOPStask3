@@ -55,6 +55,7 @@ model.add(Dropout(0.4))
 model.add(Dense(17)) 
 model.add(Activation('softmax'))
 model.compile(loss=keras.losses.categorical_crossentropy, optimizer='adam', metrics=["accuracy"]) 
+g = model.fit(x_train,y_train,epochs=10)
 f = model.evaluate(x_test, y_test)
 
 s = open("accuracy.txt","w+") 

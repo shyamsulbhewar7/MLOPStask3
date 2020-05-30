@@ -28,9 +28,9 @@ from keras.layers import Dense, Activation, Dropout, Flatten, Conv2D, MaxPooling
 from keras.layers.normalization import BatchNormalization
 import numpy as np
 model = Sequential()
-model.add(Conv2D(filters= 64, kernel_size=(7,7), strides=(), padding='valid'))
+model.add(Conv2D(filters= 64, kernel_size=(7,7), strides=(4,4), padding='valid'))
 model.add(MaxPooling2D(pool_size=(2,2), strides=(2,2), padding='valid'))
-model.add(Conv2D(filters= 64, kernel_size=(3,3), strides=(3,3), padding='valid'))
+model.add(Conv2D(filters= 64, kernel_size=(4,4), strides=(4,4), padding='valid'))
 model.add(Conv2D(filters= 128, kernel_size=(2,2), strides=(2,2), padding='valid'))
 model.add(MaxPooling2D(pool_size=(2,2), strides=(2,2), padding='valid'))
 model.add(Conv2D(filters= 256, kernel_size=(2,2), strides=(2,2), padding='valid'))

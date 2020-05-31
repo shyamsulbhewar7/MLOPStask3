@@ -11,6 +11,8 @@ from keras.layers import Flatten
 from keras.optimizers import SGD
 import model_layers
 from model_layers import *
+model.add(Flatten()) 
+model.add(Dense(100, activation='relu', kernel_initializer='he_uniform'))
 model.add(Dense(10, activation='softmax'))
 opt = SGD(lr=0.01, momentum=0.9)
 model.compile(optimizer=opt, loss='categorical_crossentropy', metrics=['accuracy'])

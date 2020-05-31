@@ -63,9 +63,11 @@ def evaluation(dataX, dataY, n_folds=5):
 def summary(scores):
 	# print summary
 	#print('Accuracy: mean=%.3f std=%.3f, n=%d' % (mean(scores)*100, std(scores)*100, len(scores)))
-	print('> %.3f' % ((mean(scores)*100 * 100.0))
+	#print('> %.3f' % ((mean(scores)*100 * 100.0))
+	print('Accuracy: mean=%.3f std=%.3f, n=%d' % (mean(scores)*100, std(scores)*100, len(scores)))
 
 def controller():
+	# load dataset
 	trainX, trainY, testX, testY = load_dataset()
 	# prepare pixel data
 	trainX, testX = data_distri(trainX, testX)
@@ -73,4 +75,6 @@ def controller():
 	scores, histories = evaluation(trainX, trainY)
 	# summarize estimated performance
 	summary(scores)
+	      
 controller()
+	      

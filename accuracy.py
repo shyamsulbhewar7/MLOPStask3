@@ -1,6 +1,6 @@
 #!/usr/bin/env python
-import model_layer.py #import them here
-import model_layer2.py #importing them here because we are compiling it everyd time.
+import model_layers.py #import them here
+import model_layers2.py #importing them here because we are compiling it everyd time.
 from numpy import mean
 from numpy import std
 from sklearn.model_selection import KFold

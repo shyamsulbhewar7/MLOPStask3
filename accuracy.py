@@ -26,7 +26,7 @@ def load_dataset():
 	return trainX, trainY, testX, testY
 
 # scale pixels
-def prep_pixels(train, test):
+def data_distri(train, test):
 	# convert from integers to floats
 	train_norm = train.astype('float32')
 	test_norm = test.astype('float32')
@@ -39,44 +39,42 @@ def prep_pixels(train, test):
 # define cnn model
 
 # evaluate a model using k-fold cross-validation
-def evaluate_model(dataX, dataY, n_folds=5):
+def evaluation(dataX, dataY, n_folds=5):
 	scores, histories = list(), list()
 	# prepare cross validation
 	kfold = KFold(n_folds, shuffle=True, random_state=1)
 	# enumerate splits
 	for train_ix, test_ix in kfold.split(dataX):
 		# define model
-		#model = define_model()  #no need now ...no  keep it.but you are printing two thing I only printed one that is accuracy nothing else.
-    #do as u think o
+		#model = define_model()  
 		# select rows for train and test
 		trainX, trainY, testX, testY = dataX[train_ix], dataY[train_ix], dataX[test_ix], dataY[test_ix]
 		# fit model
 		history = model.fit(trainX, trainY, epochs=10, batch_size=32, validation_data=(testX, testY), verbose=0)
 		# evaluate model
 		_, acc = model.evaluate(testX, testY, verbose=0)
-		print('> %.3f' % (acc * 100.0))
+		#print('> %.3f' % (acc * 100.0))
 		# stores scores
 		scores.append(acc)
 		histories.append(history)
 	return scores, histories
 
-
 # summarize model performance
-def summarize_performance(scores):
+def summary(scores):
 	# print summary
 	#print('Accuracy: mean=%.3f std=%.3f, n=%d' % (mean(scores)*100, std(scores)*100, len(scores)))
-
+	print('> %.3f' % ((mean(scores)*100 * 100.0))
 
 # run the test harness for evaluating a model
-def run_test_harness():
+def controller():
 	# load dataset
 	trainX, trainY, testX, testY = load_dataset()
 	# prepare pixel data
-	trainX, testX = prep_pixels(trainX, testX)
+	trainX, testX = data_distri(trainX, testX)
 	# evaluate model
-	scores, histories = evaluate_model(trainX, trainY)
+	scores, histories = evaluation(trainX, trainY)
 	# summarize estimated performance
-	summarize_performance(scores)
+	summary(scores)
 
 # entry point, run the test harness
-run_test_harness()
+controller()

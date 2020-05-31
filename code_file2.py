@@ -1,7 +1,6 @@
 #!/usr/bin/env python
 from numpy import mean
 from numpy import std
-from sklearn.model_selection import KFold
 from keras.datasets import mnist
 from keras.utils import to_categorical
 from keras.models import Sequential

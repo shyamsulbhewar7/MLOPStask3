@@ -1,6 +1,8 @@
 #!/usr/bin/env python
 import model_layers 
 import model_layers2 
+from model_layers import *
+from model_layers2 import * 
 from numpy import mean
 from numpy import std
 from sklearn.model_selection import KFold
